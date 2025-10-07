@@ -30,7 +30,7 @@ The dependencies are no different from those in Debian. You can use the package 
 
 ## Compilation
 
-I use `buildroot_internal.sh` and `buildroot_internal.sh` to compile Mesa, you can use these scripts to compile your own Mesa builds. The first script creates Debian distro with debootstrap and the second script installs dev packages, compilie Mesa and generate .deb package.
+I use `build_dist-buildroot.sh` and `buildroot_internal.sh` to compile Mesa, you can use these scripts to compile your own Mesa builds. The first script creates Debian distro with debootstrap and the second script installs dev packages, compilie Mesa and generate .deb package.
 
 ## Revert to debian mesa
 

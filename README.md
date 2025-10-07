@@ -4,7 +4,7 @@ This repository contains the latest release of mesa for Debian stable with the a
 
 ## Download and installation
 
-builds can be downloaded from [**the releases page**](https://github.com/execlibs/mesa-debian/releases). After downloading, run **apt install mesa-X.X.X.deb**
+Builds can be downloaded from [**the releases page**](https://github.com/execlibs/mesa-debian/releases). After downloading, run **apt install mesa-X.X.X.deb**
 
 ---
 
@@ -31,3 +31,19 @@ The dependencies are no different from those in Debian. You can use the package 
 ## Compilation
 
 I use `buildroot_internal.sh` and `buildroot_internal.sh` to compile Mesa, you can use these scripts to compile your own Mesa builds. The first script creates Debian distro with debootstrap and the second script installs dev packages, compilie Mesa and generate .deb package.
+
+## Revert to debian mesa
+
+Reinstall these packages:
+
+    apt reinstall -y libegl-mesa0, libgl1-mesa-dri, libglx-mesa0, mesa-va-drivers, mesa-libgallium, mesa-vulkan-drivers, libgbm1
+
+Command revert standart Mesa packages
+
+---
+
+### Links to the sources
+
+* https://mesa3d.org
+* https://archive.mesa3d.org
+* https://gitlab.freedesktop.org/mesa/mesa

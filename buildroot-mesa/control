@@ -1,0 +1,8 @@
+Package: mesa-updated
+Version: 25.2.4
+Architecture: amd64
+Maintainer: executionerrok <executioner932@gmail.com>
+Replaces: libegl-mesa0, libgl1-mesa-dri, libglx-mesa0, mesa-va-drivers, mesa-libgallium, mesa-vulkan-drivers, libgbm1
+Provides: libegl-mesa0, libgl1-mesa-dri, libglx-mesa0, mesa-va-drivers, mesa-libgallium, mesa-vulkan-drivers, libgbm1
+Priority: optional
+Description: fresh mesa to debian

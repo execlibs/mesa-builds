@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+
+rm -f /usr/lib/x86_64-linux-gnu/libgallium-25.0.7-2.so
+
+ldconfig
+
+exit 0

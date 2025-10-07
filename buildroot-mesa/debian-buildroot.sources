@@ -1,0 +1,6 @@
+# Modernized from /etc/apt/sources.list
+Types: deb deb-src
+URIs: http://ftp.ru.debian.org/debian
+Suites: stable
+Components: main non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg

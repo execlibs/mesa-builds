@@ -22,12 +22,12 @@ done
 if ! command -v debootstrap &> /dev/null; then
     apt update
     apt install -y debootstrap
-fi         #if not installed
+fi         
 
 rm -rf /srv/main00                   #if not cleaned
 
 cp ./buildroot_internal.sh /tmp
-cp ./debian-buildroot.sources /tmp
+cp ./debian-buildroot.sources /tmp                                     #copy important files to build
 cp ./meson.options /tmp
 cp ./control /tmp
 cp ./postinst /tmp
@@ -35,41 +35,41 @@ cd /srv
 
 mkdir main00
 
-
+#create debian in chroot
 debootstrap stable /srv/main00 http://deb.debian.org/debian
 
 echo start image downloaded...
 
 cd ./main00
 
-cp /tmp/buildroot_internal.sh /srv/main00/
+cp /tmp/buildroot_internal.sh /srv/main00/                                                                   #copy important files to chroot
 cp /tmp/debian-buildroot.sources /srv/main00/etc/apt/sources.list.d
 cp /tmp/meson.options /srv/main00/
 cp /tmp/postinst /srv/main00/
 cp /tmp/control /srv/main00/
 
-rm -f /srv/main00/etc/issue
+rm -f /srv/main00/etc/issue                                                        #cleaning
 rm -f /srv/main00/etc/issue.net
 rm -f /tmp/buildroot_internal.sh
 rm -f /tmp/debian-buildroot.sources
 rm -f /tmp/postinst
 rm -f /tmp/control
-
+                                                            #avoid mount bug(mount obly dev)
 mount --bind /dev dev/
 
 
-chmod 0775 /srv/main00/buildroot_internal.sh
+chmod 0775 /srv/main00/buildroot_internal.sh                               #set exec attr
 
-chroot /srv/main00 /bin/sh -c /buildroot_internal.sh
+chroot /srv/main00 /bin/sh -c /buildroot_internal.sh                           #enter in build root and exec script in him
 
 cd /srv/main00
 
-umount /dev dev/
+umount /dev dev/                                #if chroot script exit, unmount all VFS
 umount /proc proc/
 umount /sys sys/
 
 cp /srv/main00/exported.deb /srv
-rm -rf /srv/main00
+rm -rf /srv/main00                                       #cleaning
 
 echo mesa is assembled. see /srv dir for find .deb package
 

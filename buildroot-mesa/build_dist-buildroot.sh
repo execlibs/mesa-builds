@@ -54,7 +54,7 @@ rm -f /tmp/buildroot_internal.sh
 rm -f /tmp/debian-buildroot.sources
 rm -f /tmp/postinst
 rm -f /tmp/control
-                                                            #avoid mount bug(mount obly dev)
+                                                            #avoid mount bug(mount only dev)
 mount --bind /dev dev/
 
 
@@ -73,5 +73,5 @@ rm -rf /srv/main00                                       #cleaning
 
 echo mesa is assembled. see /srv dir for find .deb package
 
-
+#end message
 

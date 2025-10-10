@@ -7,11 +7,11 @@ export DEBIAN_FRONTEND=noninteractive                          #suppress all mes
 
 apt update
 
-apt install -y build-essential                                  #download gcc and other build tools
+apt install -y build-essential                                  #download gcc and build tools
 
 apt build-dep -y mesa
 
-apt build-dep -y wine                                            #for build wine but not requried
+#apt build-dep -y wine                                            #for build wine but not requried
 
 apt install -y wget curl                                     #install download tools
 

@@ -1,41 +1,41 @@
 #!/bin/sh
-                                                               #mount other VFS to avoids bugs here
+
 mount -t proc /proc proc/
 mount -t sysfs /sys sys/
 
-export DEBIAN_FRONTEND=noninteractive                          #suppress all messages during build. If build fail exit in non chroot script and delete dist
+export DEBIAN_FRONTEND=noninteractive
 
 apt update
 
-apt install -y build-essential                                  #download gcc and build tools
+apt install -y build-essential
 
 apt build-dep -y mesa
 
-#apt build-dep -y wine                                            #for build wine but not requried
+apt build-dep -y wine
 
-apt install -y wget curl                                     #install download tools
+apt install -y wget curl
 
 cd /
 
-mkdir /build                                     #src dir
-mkdir /exported                                  #output dir
+mkdir /build
+mkdir /exported
 
-wget https://archive.mesa3d.org/mesa-25.2.4.tar.xz                             #downaload sources
-tar xf /mesa-25.2.4.tar.xz -C /build                                   #unpack sources
+wget https://archive.mesa3d.org/mesa-25.2.5.tar.xz
+tar xf /mesa-25.2.5.tar.xz -C /build
 
 cd /build
 
-cp -r /build/mesa-25.2.4/* /build                                        #recursive copy in build dir
+cp -r /build/mesa-25.2.5/* /build
 
-rm -f /build/meson.options                                          #remove config file and replace him
+rm -f /build/meson.options
 
 cp /meson.options /build
-#mesa command line build options for release build
+
 meson setup --wipe build/ -D b_ndebug=true -D microsoft-clc=disabled -D gbm=enabled -D gles2=enabled -D egl=enabled -D android-libbacktrace=disabled -Dbuildtype=release -D b_lto=false -Dprefix=/usr
 
-meson compile -C build/                                               #BUILD!!!
+meson compile -C build/
 
-meson install --strip --destdir /exported -C build                         #remove and minimazation file size for binaries
+meson install --strip --destdir /exported -C build
 
 cd /exported                        #generate .deb package
 mkdir DEBIAN
@@ -50,6 +50,6 @@ mv exported.deb mesa-updated.deb
 apt clean
 apt update
 
-rm -f /buildroot_internal.sh                                #cleaning
+rm -f /buildroot_internal.sh
 
 

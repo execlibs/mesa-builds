@@ -1,5 +1,5 @@
 Package: mesa-updated
-Version: 25.2.4
+Version: 25.2.5
 Architecture: amd64
 Maintainer: executionerrok <executioner932@gmail.com>
 Replaces: libegl-mesa0, libgl1-mesa-dri, libglx-mesa0, mesa-va-drivers, mesa-libgallium, mesa-vulkan-drivers, libgbm1
